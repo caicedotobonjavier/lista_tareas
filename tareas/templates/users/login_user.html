@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div style='text-align:center;'>
+        <h1>Acceder a la plataforma de tareas</h1>
+
+        <form method="POST" style="margin:50px;">{% csrf_token %}
+            <label for="">Email :</label>
+            {{form.email}}
+            <br>
+            <br>
+            <label for="">Contraseña :</label>
+            {{form.password}}
+            <br>
+            <br>
+
+            {% for error in form.errors.password %}
+                <p style='color:red;'>{{error}}</p>
+            {% endfor %}
+            
+            <button type="submit" style="margin:10px; font-size:19px; border-radius:5px;">Acceder</button>
+
+            <a href="{% url 'users_app:new_user' %}" >Registrarse</a>
+            
+            
+
+
+        </form>
+    </div>
+</body>
+</html>
